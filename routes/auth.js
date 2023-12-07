@@ -7,8 +7,13 @@ router.get("/login", (req, res) => {
 });
 
 //if user choose google signin
-router.get("/google", passport.authenticate("google"));
+router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 
+//Redirect
+router.get(
+  "/redirect/google",
+  passport.authenticate("google", { failureRedirect: "/login" })
+);
 //if user choose facebook signin
 router.get("/facebook", (req, res) => {
   res.send("Your are logged in with Facebook");
