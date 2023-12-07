@@ -1,15 +1,13 @@
 const express = require("express");
 const router = express.Router();
-
+const passport = require("passport");
 //when user click login btn
 router.get("/login", (req, res) => {
   res.render("login");
 });
 
 //if user choose google signin
-router.get("/google", (req, res) => {
-  res.send("Your are logged in with Google");
-});
+router.get("/google", passport.authenticate("google"));
 
 //if user choose facebook signin
 router.get("/facebook", (req, res) => {
