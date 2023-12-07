@@ -1,0 +1,16 @@
+{
+  "name": "userauth_oauth",
+  "version": "1.0.0",
+  "description": "User Login and register using OAuth, Passport.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rushabh Gandhi",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.2"
+  }
+}
