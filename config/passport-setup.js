@@ -31,11 +31,11 @@ passport.use(
           })
             .save()
             .then((newUser) => {
-              console.log(`User Created `, newUser);
+              //console.log(`User Created `, newUser);
               done(null, newUser);
             });
         } else {
-          console.log(`Current User`, currentUser);
+          //console.log(`Current User`, currentUser);
           done(null, currentUser);
         }
       });

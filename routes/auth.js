@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require("passport");
 //when user click login btn
 router.get("/login", (req, res) => {
-  res.render("login");
+  res.render("login", { user: req.user });
 });
 
 //if user choose google signin
@@ -12,9 +12,10 @@ router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 //Redirect
 router.get(
   "/redirect/google",
-  passport.authenticate("google", { failureRedirect: "/login" }),
+  passport.authenticate("google", { failureRedirect: "/auth/login" }),
   (req, res) => {
-    res.send(`Welcome ${req.user}`);
+    res.render("profile", { user: req.user });
+    //res.redirect("/profile");
   }
 );
 //if user choose facebook signin
@@ -24,6 +25,11 @@ router.get("/facebook", (req, res) => {
 
 //logout
 router.get("/logout", (req, res) => {
-  res.send("User Logout");
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
 });
 module.exports = router;
