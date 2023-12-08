@@ -12,7 +12,10 @@ router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 //Redirect
 router.get(
   "/redirect/google",
-  passport.authenticate("google", { failureRedirect: "/login" })
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  (req, res) => {
+    res.send(`Welcome ${req.user}`);
+  }
 );
 //if user choose facebook signin
 router.get("/facebook", (req, res) => {
